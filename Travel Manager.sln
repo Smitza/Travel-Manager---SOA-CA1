@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel Manager", "Travel Manager\Travel Manager.csproj", "{1610A5C0-75FB-4B10-A4B9-A562048921ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1610A5C0-75FB-4B10-A4B9-A562048921ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1610A5C0-75FB-4B10-A4B9-A562048921ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1610A5C0-75FB-4B10-A4B9-A562048921ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1610A5C0-75FB-4B10-A4B9-A562048921ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6AF5BA7-1DA8-4429-8F84-A1DC97A08001}
+	EndGlobalSection
+EndGlobal
