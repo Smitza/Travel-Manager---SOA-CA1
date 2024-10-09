@@ -21,5 +21,19 @@ namespace Travel_Manager
         {
 
         }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            string country = textBox1.Text;
+            var news = new News();
+            List<Article> articles = await news.NewsResult(country);
+
+            dataGridView1.DataSource = articles;
+        }
+
+        private  void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
