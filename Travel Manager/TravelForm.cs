@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Travel_Manager
 {
-    public partial class FlightForm : Form
+    public partial class TravelForm : Form
     {
-        public FlightForm()
+        public TravelForm()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
