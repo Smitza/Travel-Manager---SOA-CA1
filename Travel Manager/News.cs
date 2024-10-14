@@ -11,7 +11,7 @@ namespace Travel_Manager
 {
     public class News
     {
-        static readonly string NEWS_URL = "https://newsapi.org/v2/top-headlines";
+        static readonly string NEWS_URL = "https://newsapi.org/v1/current.json";
         static string API_KEY = "e82c5c5f920247d8b31b3eb9f5279e8f";
 
         public async Task<List<Article>> NewsResult(string country)
@@ -33,8 +33,16 @@ namespace Travel_Manager
             }
             else
             {
-                throw new Exception($"Error fetching news: {response.StatusDescription}");
+                return new List<Article>
+                {
+                    new Article
+                    {
+                        title = "Error",
+                        description = $"Failed to fetch news: {response.StatusDescription}"
+                    }
+                };
             }
         }
     }
+
 }
