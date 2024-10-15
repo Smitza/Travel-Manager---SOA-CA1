@@ -12,8 +12,7 @@ namespace Travel_Manager
     {
         private static readonly string WEATHER_URL = "http://api.weatherapi.com/v1/current.json";
         private static readonly string API_KEY = "378baee090cd416e8b5182934241410";
-
-        public async Task<List<WeatherForcast>> GetCurrentWeather(string location)
+        public async Task<List<string>> GetCurrentWeather(string location)
         {
             var client = new RestClient(WEATHER_URL);
             var request = new RestRequest();
@@ -22,38 +21,40 @@ namespace Travel_Manager
 
             var response = await client.ExecuteAsync(request);
 
-
-
-
             if (response.IsSuccessful && !string.IsNullOrEmpty(response.Content))
             {
                 var weatherResult = JsonSerializer.Deserialize<WeatherResponse>(response.Content);
-                return weatherResult?.weatherForcasts.ToList() ?? new List<WeatherForcast>();
+
+                
+                var weatherDetails = new List<string>
+                {
+                    $"Location: {weatherResult.location.name}, {weatherResult.location.region}, {weatherResult.location.country}",
+                    $"Temperature (C): {weatherResult.current.temp_c}°C",
+                    $"Temperature (F): {weatherResult.current.temp_f}°F",
+                    $"Condition: {weatherResult.current.condition.text}",
+                    $"Humidity: {weatherResult.current.humidity}%",
+                    $"Wind: {weatherResult.current.wind_mph} mph ({weatherResult.current.wind_kph} kph) {weatherResult.current.wind_dir}",
+                    $"Pressure: {weatherResult.current.pressure_mb} mb ({weatherResult.current.pressure_in} in)",
+                    $"Precipitation: {weatherResult.current.precip_mm} mm ({weatherResult.current.precip_in} in)",
+                    $"Feels Like (C): {weatherResult.current.feelslike_c}°C",
+                    $"Feels Like (F): {weatherResult.current.feelslike_f}°F",
+                    $"Visibility: {weatherResult.current.vis_km} km ({weatherResult.current.vis_miles} miles)",
+                    $"UV Index: {weatherResult.current.uv}",
+                    $"Gusts: {weatherResult.current.gust_mph} mph ({weatherResult.current.gust_kph} kph)",
+                    $"Last Updated: {weatherResult.current.last_updated}"
+                };
+
+                return weatherDetails;
             }
             else
             {
-                return new List<WeatherForcast>
-                {
-                    new WeatherForcast
-                    {
-                        location = new Location { name = "error" },
-                        current = new Current
-                        {
-                            condition = new Condition { text = $"Failed to fetch weather: {response.StatusDescription}" }
-                        }
-                    }
-                };
-
-
+                // If the API call fails
+                return new List<string> { $"Failed to fetch weather: {response.StatusDescription}" };
             }
         }
 
-        public class WeatherResponse
-        {
-            public WeatherForcast[] weatherForcasts { get; set; }
-        }
 
-        public class WeatherForcast
+        public class WeatherResponse
         {
             public Location location { get; set; }
             public Current current { get; set; }

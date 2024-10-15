@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="CityCountryMapping.cs" />
     <Compile Include="News.cs" />
     <Compile Include="TravelForm.cs">
       <SubType>Form</SubType>
