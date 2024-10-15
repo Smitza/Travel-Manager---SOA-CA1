@@ -14,18 +14,6 @@ namespace Travel_Manager
         static readonly string NEWS_URL = "https://newsapi.org/v2/top-headlines";
         static string API_KEY = "e82c5c5f920247d8b31b3eb9f5279e8f";
 
-        public string GetNewsApiUrl(string country)
-        {
-            var client = new RestClient(NEWS_URL);
-            var request = new RestRequest();
-
-            // Ensure the correct format for URL parameters
-            request.AddParameter("country", country);
-            request.AddParameter("apiKey", API_KEY);
-
-            // Return the correctly formatted URL
-            return client.BuildUri(request).ToString();
-        }
 
         public async Task<List<Article>> NewsResult(string country)
         {
