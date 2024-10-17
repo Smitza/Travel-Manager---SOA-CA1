@@ -101,6 +101,5 @@ namespace Travel_Manager
             public string icon { get; set; }
             public int code { get; set; }
         }
-
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Travel_Manager
 {
-    //Since the NewsApi and WeatherApi require different parameters, this class binds both the city and country together. 
     public class CityCountryMapping
     {
         public string CityName { get; set; }
@@ -17,9 +16,10 @@ namespace Travel_Manager
             CityName = cityName;
             CountryCode = countryCode;
         }
+
         public override string ToString()
         {
-            return CityName;  // To display city names in the ComboBox
+            return CityName;  
         }
     }
 }
