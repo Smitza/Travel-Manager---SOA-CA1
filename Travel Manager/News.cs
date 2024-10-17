@@ -11,7 +11,7 @@ namespace Travel_Manager
 {
     public class News
     {
-        static readonly string NEWS_URL = "https://newsapi.org/v2/top-headlines";
+        static readonly string NEWS_URL = "https://newsapi.org/v2/everything";
         static string API_KEY = "e82c5c5f920247d8b31b3eb9f5279e8f";
 
 
@@ -22,7 +22,7 @@ namespace Travel_Manager
 
             request.Method = Method.Get;
 
-            request.AddParameter("country", country);
+            request.AddParameter("q", country);
             request.AddParameter("apiKey", API_KEY);
 
             var response = await client.ExecuteAsync(request);
